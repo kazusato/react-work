@@ -11,13 +11,31 @@ class App extends Component {
       ],
       uniqueId: 1,
     };
+    this.addTodo.bind(this);
+  }
+
+  addTodo(title) {
+    const {
+      tasks,
+      uniqueId
+    } = this.state;
+
+    tasks.push({
+      title,
+      id: uniqueId,
+    });
+
+    this.setState({
+      tasks,
+      uniqueId: uniqueId + 1,
+    });
   }
 
   render() {
     return (
       <div>
         <h1>TODO App</h1>
-        <TodoInput/>
+        <TodoInput addTodo={this.addTodo}/>
         <TodoList tasks={this.state.tasks}/>
       </div>
     );
