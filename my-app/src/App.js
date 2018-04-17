@@ -1,18 +1,56 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+const FuncHello = (props) => {
+    return <div>こんにちは、{props.name}さん。</div>;
+};
+
+class ClassHello extends Component {
+    render() {
+        return <div>こんにちは、{this.props.name}様。</div>;
+    }
+}
+
+const HelloFragment = () => {
+    return (
+        <React.Fragment>
+            <FuncHello name="おおお"/>
+            <ClassHello name="かかか"/>
+        </React.Fragment>
+    );
+};
+
+const DefaultPropsHello = (props) => {
+    return (
+        <div>こんにちは、{props.name}さん。</div>
+    );
+};
+DefaultPropsHello.defaultProps = {
+    name: '名無し'
+};
+
+// 手元環境では実行時にSyntax errorになった。
+/*
+const ShortFragment = (name) => {
+    return (
+        <>
+            <FuncHello name="ききき"/>
+            <ClassHello name="くくく"/>
+        </>
+    );
+};
+*/
 
 class App extends Component {
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">Hello, world!</h1>
-                </header>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
+            <div>
+                <FuncHello name="あああ"/>
+                <ClassHello name="いいい"/>
+                <ClassHello name="ううう"/>
+                <ClassHello name="えええ"/>
+                <HelloFragment/>
+                <DefaultPropsHello name="さささ"/>
+                <DefaultPropsHello/>
             </div>
         );
     }
