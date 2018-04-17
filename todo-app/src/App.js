@@ -11,7 +11,7 @@ class App extends Component {
       ],
       uniqueId: 1,
     };
-    this.addTodo.bind(this);
+   this.addTodo = this.addTodo.bind(this);
   }
 
   addTodo(title) {
