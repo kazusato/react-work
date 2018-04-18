@@ -18,6 +18,14 @@ function tasksReducer(state = initialState, action) {
 
 const store = createStore(tasksReducer);
 
+function handleChange() {
+    console.log('[handleChange] ')
+    console.log(store.getState());
+}
+
+const unsubscribe = store.subscribe(handleChange);
+// unsubscribe();
+
 const addTask = (task) => ({
     type: 'ADD_TASK',
     payload: {
@@ -25,6 +33,8 @@ const addTask = (task) => ({
     }
 });
 
+console.log('[before dispatch] ');
 console.log(store.getState());
 store.dispatch(addTask('Storeを学ぶ'));
+console.log('[after dispatch] ');
 console.log(store.getState());
